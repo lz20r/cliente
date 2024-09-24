@@ -18,10 +18,10 @@
   }
 } */
 
-
 function mostrarNota(nota) {
-    return nota >= 0 && nota <= 10
-        ? nota >= 9
+  console.log(
+    nota >= 0 && nota <= 10
+      ? nota >= 9
         ? "Sobresaliente"
         : nota >= 7
         ? "Notable"
@@ -30,6 +30,6 @@ function mostrarNota(nota) {
         : nota >= 5
         ? "Suficiente"
         : "Insuficiente"
-        : "Se debe introducir una nota entre 0 y 10";
-    }; 
-
+      : "Se debe introducir una nota entre 0 y 10"
+  );
+}
