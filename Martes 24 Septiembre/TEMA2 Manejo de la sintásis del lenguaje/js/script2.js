@@ -30,6 +30,6 @@ function mostrarNota(nota) {
         : nota >= 5
         ? "Suficiente"
         : "Insuficiente"
-      : "Se debe introducir una nota entre 0 y 10"
+      : "Se debe introducir una nota entre 0 y 10" 
   );
 }
