@@ -29,22 +29,22 @@ window.onload = function () {
     texto.innerHTML =
       nota >= 0 && nota <= 10
         ? nota >= 9
-          ? "Sobresaliente"
+          ? "Has sacado un sobresaliente"
           : nota >= 7
-          ? "Notable"
+          ? "Has sacado un notable"
           : nota >= 6
-          ? "Bien"
+          ? "Has sacado un bien"
           : nota >= 5
-          ? "Suficiente"
-          : "Insuficiente"
-        : "Se debe introducir una nota entre 0 y 10";
+          ? "Has sacado un suficiente"
+          : "Has sacado un insuficiente"
+        : "Si no introduces una nota entre 0 y 10, no puedo decirte nada";
   }
 
   var boton = document.getElementById("boton");
 
   boton.onclick = function () {
-    mostrarNota(prompt("Introduce una nota entre 0 y 10", ""));
+    mostrarNota(prompt("Si introduces una nota entre 0 y 10, te diré qué nota has sacado", ""));
     };
-    
-    return mostrarNota(prompt("Introduce una nota entre 0 y 10", ""));
+     
+    return mostrarNota(prompt("Necesito que introduzcas una nota entre 0 y 10", ""));
 };

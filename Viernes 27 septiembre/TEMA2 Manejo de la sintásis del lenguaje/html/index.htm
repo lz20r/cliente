@@ -3,12 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Funciones Anónimas</title>
     <link rel="stylesheet" href="../css/style.css">
     <script src="../js/script.js"></script>
 </head>
 <body>
     <h1>Funciones Anónimas</h1>
+    <h2>Ejericio 15</h2>
+
+    <p> Crear una función anónima que se autoejecute y muestre un alert que diga "Hola Mundo".</p> 
+    <script>
+        (function(){
+            alert("Hola Mundo");
+        })();
+    </script>
+    
+    <h2>Ejericio 16</h2>
+    <p> Crear una función anónima que nos muestre las notas de un alumno usando <strong>window.onload</strong>
+    </p>
     <!--<button id="boton">Pulsar</button> -->
     <button id="boton" onclick="mostrarNota()">Muestra las notas</button>
     <p id = "texto"></p>
