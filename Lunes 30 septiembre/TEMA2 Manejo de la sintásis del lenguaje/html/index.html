@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            let numero = parseInt(Math.random() * 100);
+            let suNumero = preguntarNumero();
+            + prompt("Adivina el número");
+
+            for (; numero != suNumero;) {
+                isNaN(suNumero)
+                    ? alert("No es un número")
+                    : + prompt("Debes introducir un número");
+                    numero > suNumero
+                    ? alert("El número es mayor")
+                    : alert("El número es menor");
+                suNumero = preguntarNumero();
+            }
+            texto.innerHTML = "¡Enhorabuena! Has acertado el número";
+        }
+
+        function preguntarNumero() {
+            return +prompt("Adivina el número");
+        }
+    </script>
+</head>
+
+<body>
+    <div id="resultado"></div>
+</body>
+
+</html>
