@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script text type="text/javascript">
+        window.onload = function () {
+            boton1.onclick = function () {
+                ventana = window.open("vacio.html", "ventana", "width=500,height=500,left=400,top=400");
+            }
+
+            boton2.onclick = function () {
+                ventana.moveBy(400, 400);
+            }
+
+            boton3.onclick = function () {
+                ventana.resizeBy(400, 400);
+            }
+
+            boton4.onclick = function () {
+                ventana1 = window.open("index.htm", "ventana", "width=500,height=500,left=400,top=400");
+            }
+
+            boton5.onclick = function () {
+                ventana.close();
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    <button id="boton1">Abrir ventana</button>
+    <br> <br>
+    <button id="boton2">Mover ventana</button>
+    <br> <br>
+    <button id="boton3">Redimensionar ventana</button>
+    <br> <br>
+    <button id="boton4">Abrir nueva ventana</button>
+    <br> <br>
+    <button id="boton5">Cerrar ventana</button>
+
+</body>
+
+</html>
