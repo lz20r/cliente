@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let segundos = 50;
+        let minutos = 58;
+        let horas = 0;
+        let segundosB = 15
+        let minutosB = 0
+        let horasB = 1
+        window.onload = escribir;
+
+        function escribir() {
+            segundos == 59
+                ? (segundos = 0,
+                    minutos < 59 ? minutos++ : (minutos = 0), horas++)
+                : segundos++;
+            reloj.innerHTML = horas + ":" + minutos + ":" + segundos;
+            horas == horasB && minutos == minutosB && segundos == segundosB
+                ? reloj.innerHTML = horasB + ":" + minutosB + ":" + segundosB
+                : setTimeout("scribir()", 1000);
+        }
+    </script>
+    <style>
+    </style>
+</head>
+
+<body>
+    <div id="reloj"></div>
+</body>
+
+</html>

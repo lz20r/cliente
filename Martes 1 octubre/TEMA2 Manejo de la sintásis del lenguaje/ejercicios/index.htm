@@ -11,18 +11,23 @@
                 ventana = window.open("vacio.html", "ventana", "width=500,height=500,left=400,top=400");
             }
 
+            function ventanaExiste(ventana) {
+                !ventana || ventana.closed ? alert("Ventana cerrada") : alert("Ventana abierta");
+            }
+
             boton2.onclick = function () {
+                ventanaExiste(ventana);
                 ventana.moveBy(400, 400);
             }
 
             boton3.onclick = function () {
+                ventanaExiste(ventana);
                 ventana.resizeBy(400, 400);
             }
 
             boton4.onclick = function () {
-                ventana1 = window.open("index.htm", "ventana", "width=500,height=500,left=400,top=400");
+                ventana = window.open("parametros.htm", "ventana", "width=500,height=500,left=400,top=400");
             }
-
             boton5.onclick = function () {
                 ventana.close();
             }
