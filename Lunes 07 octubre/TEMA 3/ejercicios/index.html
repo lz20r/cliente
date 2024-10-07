@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script text type="text/javascript">
+        window.onload = function () {
+            boton1.onclick = function () {
+                ventana = window.open("texto.html", "ventana", "width=400,height=68,left=400,top=68");
+                ventana.focus();
+            }
+
+            function ventanaExiste(ventana) {
+                !ventana || ventana.closed ? alert("Ventana cerrada") : alert("Ventana abierta");
+            }
+
+            boton2.onclick = function () {
+                ventanaExiste(ventana);
+                ventana.resizeBy(100, 100);
+            }
+            boton5.onclick = function () {
+                ventana.close();
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    <button id="boton1">Abrir ventana</button>
+    <br> <br>
+    <button id="boton2">Redimensionar ventana</button>
+    <br> <br>
+    <button id="boton5">Cerrar ventana</button>
+
+</body>
+
+</html>
