@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //window.onload = escribir;
+        window.addEventListener("load", escribir)
+        window.onresize = escribir;
+        function escribir() {
+            texto.innerHTML = `<span style="color: green" font-size:24px"> La resolución de la pantalla es </span> <span style="color: red; font-size:24px">${window.innerWidth}</span> x <span style="color: blue; font-size:24px">${window.innerHeight}</span>`;
+        }
+
+
+
+    </script>
+</head>
+
+<body>
+    <p id="texto"></p>
+</body>
+
+</html>
