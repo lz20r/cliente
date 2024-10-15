@@ -1,0 +1,22 @@
+body {
+    background-color: black;
+    color: white;
+    text-align: justify;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+div {
+    border: 1px solid white;
+    padding: 10px;
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: justify;
+}
+
+h2 {
+    text-align: center;
+}
