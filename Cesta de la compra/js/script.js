@@ -1,10 +1,31 @@
-function addProduct(product, price) {
-  let cesta = document.getElementById("cesta");
-  let total = 0;
-  if (cesta.innerHTML != "") {
-    total = parseInt(cesta.lastChild.innerHTML.split(" ")[1]);
-  }
-  total += price;
-  cesta.innerHTML += `<div>${product} ${price}€</div>`;
-  cesta.innerHTML += `<div>Total: ${total}€</div>`;
-}
+window.onload = function () {
+  const cart = document.querySelector("#cart");
+  const tables = cart.querySelectorAll("table");
+  const total = tables[0].querySelector("tr").nextSibling.textContent;
+  const p = document.createElement("p");
+  p.textContent = `Total: ${total}`;
+  cart.appendChild(p);
+
+  const products = document.querySelector("#products");
+  const buttons = products.querySelectorAll("añadido");
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const cart = document.querySelector("#cart");
+      const tables = cart.querySelectorAll("table");
+      const total = tables[0].querySelector("tr").nextSibling.textContent;
+      const p = document.createElement("p");
+      p.textContent = `Total: ${total}`;
+      cart.appendChild(p);
+    });
+  });
+
+  const button = document.querySelector("#total");
+  button.addEventListener("click", () => {
+    const cart = document.querySelector("#cart");
+    const tables = cart.querySelectorAll("table");
+    const total = tables[0].querySelector("tr").nextSibling.textContent;
+    const p = document.createElement("p");
+    p.textContent = `Total: ${total}`;
+    cart.appendChild(p);
+  });
+};
