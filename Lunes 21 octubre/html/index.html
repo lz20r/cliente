@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/script.js"></script>
+</head>
+
+<body>
+    <button id="boton"> El País </button>
+    <button id="boton2"> El Mundo </button>
+    <button id="boton3"> CDM FP</button>
+
+    <script>
+        window.onload = function () {
+            document.getElementById("boton").addEventListener("click", localizar);
+            document.getElementById("boton2").addEventListener("click", localizar);
+            document.getElementById("boton3").addEventListener("click", localizar);
+        }
+
+        function localizar() {
+            switch (this.id) {
+                case "boton":
+                    window.location.href = "http://www.elpais.com";
+                    break;
+                case "boton2":
+                    window.location.href = "http://www.elmundo.es";
+                    break;
+                case "boton3":
+                    window.location.href = "http://www.cdmfp.es";
+                    break;
+                default:
+                    break;
+            }
+        }
+    </script>
+</body>
+
+</html>
