@@ -29,7 +29,6 @@ body {
     margin-top: 60px;
     margin-bottom: 60px;
     box-sizing: border-box;
-    overflow: hidden;
     text-align: center;
 }
 
@@ -92,6 +91,12 @@ button:hover {
 
 button:active {
     background-color: #333;
+}
+
+#añadir {
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
 }
 
 /* Responsivo para pantallas más pequeñas */
