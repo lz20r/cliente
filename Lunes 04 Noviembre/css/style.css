@@ -12,6 +12,7 @@
         }
 
         body {
+            font-size: 16px;
             margin: 0;
             padding: 0;
             background-color: black;
@@ -64,7 +65,7 @@
         }
 
         input[type="submit"]:hover {
-            background-color: #555;
+            background-color: #ffd1d1;
         }
 
         label {
@@ -85,7 +86,7 @@
 
         input[type="submit"] {
             padding: 5px 10px;
-            background-color: #333;
+            background-color: #bba771;
             color: white;
             border: none;
             border-radius: 5px;
@@ -93,10 +94,15 @@
         }
 
         input[type="submit"]:hover {
-            background-color: #555;
+            background-color: #f0afaf;
         }
 
         label {
             font-size: 20px;
             font-weight: bold;
+        }
+
+        mark {
+            background-color: #f0ceaf;
+            color: black;
         }
