@@ -4,8 +4,18 @@
  * @version 1.0
  * @date 04/11/2022
  * @author Naiara Zhiyao Lezameta Rodrigo
+ * @variables {string} texto - Contiene el texto que se va a buscar.
+ * @variables {string} word - Contiene la palabra que se va a buscar en el texto.
+ * @variables {string} expresion - Contiene la expresión regular que se va a buscar en el texto.
+ * @variables {string} innerText - Contiene el contenido de texto de los nodos y sus descendientes.
+ * @variables {string} innerHTML - Contiene la sintaxis HTML o XML que describe los descendientes del elemento.
+ * @see document.forms[0].addEventListener()
+ * @see event.preventDefault()
+ * @see document.querySelector()
+ * @see document.querySelector('textarea').value
+ * @see document.querySelector('p').innerHTML
  *
- * documentacion de los metodos utilizados
+ * Descipción de las funciones:
  * 1. addEventListener(): El método addEventListener() adjunta un controlador de eventos al elemento especificado.
  * 2. preventDefault(): El método preventDefault() cancela el evento si es cancelable, lo que significa que la acción predeterminada que pertenece al evento no ocurrirá.
  * 3. querySelector(): El método querySelector() devuelve el primer elemento que coincide con un selector de grupo de selectores CSS especificado en el documento.
