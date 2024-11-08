@@ -6,15 +6,19 @@
  * @autor         Naiara Zhiyao Lezameta Rodrigo
  * @date          08 noviembre 2019
  * @description   Este archivo JS se encarga de validar la fecha de la cita y mostrarla en el formato correcto
- * @param         {string} fecha - La fecha de la cita
  * @param         {string} cita - La fecha de la cita en formato Date
+ * @param         {string} fecha - La fecha de la cita
  * @param         {string} getmonth - El mes de la cita
  * @param         {string} getday - El día de la cita
  * @param         {string} getyear - El año de la cita
  */
 window.onload = function () {
+  event.preventDefault();
   document.forms[0].onsubmit = function () {
-    event.preventDefault();
+    if (document.getElementById("cal").value === "") {
+      alert("Por favor, seleccione una fecha");
+      return false;
+    }
     document.getElementById("citarme").addEventListener("click", function () {
       document.getElementById("texto").innerHTML = "";
       let fecha = document.getElementById("cal").value;
