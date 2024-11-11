@@ -13,8 +13,9 @@
  * @param         {string} getyear - El año de la cita
  */
 window.onload = function () {
-  event.preventDefault();
-  document.forms[0].onsubmit = function () {
+
+  document.forms[0].onsubmit = function (event) {
+    event.preventDefault();
     if (document.getElementById("cal").value === "") {
       alert("Por favor, seleccione una fecha");
       return false;
