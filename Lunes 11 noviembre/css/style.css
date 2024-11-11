@@ -1,0 +1,138 @@
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    background-color: rgb(255, 255, 255);
+    color: rgb(8, 0, 0);
+    font-weight: 400;
+    margin: auto;
+    padding: 0;
+    overflow-x: hidden;
+    background-color: rgb(255, 255, 255);
+    color: rgb(8, 0, 0);
+}
+
+h1 {
+    font-size: 40px;
+    margin: 10px;
+    padding: 10px;
+    font-family: proxima-nova, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+body {
+    font-size: 16px;
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    line-height: 1.5;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: proxima-nova, sans-serif;
+    font-weight: 400;
+}
+
+p {
+    font-size: 20px;
+    line-height: 25px;
+    text-align: justify;
+    text-justify: inter-word;
+    margin: auto;
+    padding: 10px;
+    font-family: proxima-nova, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.contenedor {
+    margin: 0 auto;
+    margin-top: 50%;
+    border: #e78428 solid 15px;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+input[type="submit"] {
+    padding: 5px 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #ffd1d1;
+}
+
+label {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+#cal {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    background-color: rgb(255, 255, 255);
+    color: rgb(14, 0, 0);
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+input[type="text"] {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    text-align: center;
+    width: 100px;
+}
+
+input[type="submit"] {
+    padding: 5px 10px;
+    background-color: #bba771;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #f0afaf;
+}
+
+label {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+mark {
+    background-color: #f0ceaf;
+    color: rgb(0, 0, 0);
+}
