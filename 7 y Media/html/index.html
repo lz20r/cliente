@@ -4,25 +4,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Black Jack</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <script src="../js/script.js"></script>
-
+    <title>Blackjack</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
-<body>
-    <h1>Black Jack</h1>
-    <p id="texto"></p>
-    <div id="cartas">
-        <img src="../img/baraja/Bastos1.png" alt="Bastos1">
+<body class="bg-dark text-white">
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Juego de Blackjack</h1>
+        <div id="game" class="text-center">
+            <div class="mb-4">
+                <button id="startGame" class="btn btn-success">Iniciar Juego</button>
+                <button id="hit" class="btn btn-primary" disabled>¡Pedir Carta!</button>
+                <button id="stand" class="btn btn-warning" disabled>¡Plantarse!</button>
+            </div>
+            <div id="gameStatus" class="mb-4">
+                <h3 id="statusMessage">Presiona "Iniciar Juego" para comenzar</h3>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="mb-3">Tus Cartas:</h4>
+                    <div id="playerCards" class="d-flex flex-wrap justify-content-center"></div>
+                    <p id="playerScore" class="mt-3">Puntuación: 0</p>
+                </div>
+                <div class="col-md-6">
+                    <h4 class="mb-3">Cartas del Crupier:</h4>
+                    <div id="dealerCards" class="d-flex flex-wrap justify-content-center"></div>
+                    <p id="dealerScore" class="mt-3">Puntuación: 0</p>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div>
-        <button onclick="iniciar()">Iniciar</button>
-        <button onclick="pedirCarta()">Pedir Carta</button>
-        <button onclick="plantarse()">Plantarse</button>
-        <button onclick="reiniciar()">Reiniciar</button>
-    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/script.js"></script>
 </body>
 
 </html>
