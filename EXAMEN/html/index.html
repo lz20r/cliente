@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculo de pago a trabajadores</title>
+    <script src="../js/script.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <div class="contenedor">
+        <h1>Calculo de pago a trabajadores</h1>
+        <form>
+            <label for="trabajadores">Trabajadores:</label>
+            <input type="text" id="trabajadores" name="trabajadores" placeholder="Nombre del trabajor">
+            <br>
+            <label for="salario">Salario burto diario:</label>
+            <input type="number" id="salario" name="salario" placeholder="Introduce el salario"> -15% IRPF
+            <br>
+            <label for="cal">Primer salario de trabajo</label>
+            <input type="date" id="primerSalario" name="primerSalario">
+            <br>
+            <label for="cal2">Primer salario de trabajo</label>
+            <input type="date" id="ultimoSalario" name="ultimoSalario">
+            <br>
+            <input type="submit" value="calcular" id="calcular">
+        </form>
+        <p id="texto"></p>
+    </div>
+</body>
+
+</html>
