@@ -7,104 +7,61 @@
     <title>Blackjack</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #343a40;
-            color: #ffffff;
-        }
-
-        .game-board {
-            background-color: #006400;
-            background-image: url('./img/baraja/tapete.jpg');
-            background-size: cover;
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.8);
-            max-width: 800px;
-            margin: auto;
-        }
-
-        .player-section,
-        .dealer-section {
-            margin: 20px 0;
-            text-align: center;
-        }
-
-        .cards-container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 15px;
-        }
-
-        .card-img {
-            width: 90px;
-            height: 140px;
-            margin: 5px;
-        }
-
-        .buttons-container {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin: 20px 0;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .player-title,
-        .dealer-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #ffd700;
-        }
-    </style>
+    <!-- Archivo de estilos -->
+    <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 
 <body>
-    <div class="container mt-5">
-        <!-- Título del juego -->
-        <h1>Juego de Blackjack</h1>
-
-        <!-- Tablero del juego -->
+    <!-- Contenedor principal -->
+    <div class="container-fluid d-flex justify-content-center align-items-center vh-100">
         <div class="game-board">
             <!-- Sección del crupier -->
-            <div class="dealer-section">
-                <div class="dealer-title">Ordenador</div>
+            <div class="text-center mb-4">
+                <h3 class="dealer-title">Ordenador</h3>
                 <div id="dealerCards" class="cards-container"></div>
-                <p id="dealerScore" class="mt-2">Puntuación: 0</p>
+                <p id="dealerScore" class="mt-2">Puntuación: ?</p>
             </div>
 
             <!-- Botones de acción -->
-            <div class="buttons-container">
-                <button id="startGame" class="btn btn-success">Iniciar Juego</button>
-                <button id="hit" class="btn btn-primary" disabled>Pedir carta</button>
-                <button id="stand" class="btn btn-warning" disabled>Plantarse</button>
+            <div class="text-center mb-4">
+                <button id="startGame" class="btn btn-success mx-2">Iniciar Juego</button>
+                <button id="hit" class="btn btn-primary mx-2" disabled>Pedir carta</button>
+                <button id="stand" class="btn btn-warning mx-2" disabled>Plantarse</button>
             </div>
 
             <!-- Sección del jugador -->
-            <div class="player-section">
-                <div class="player-title">Jugador</div>
+            <div class="text-center">
+                <h3 class="player-title">Jugador</h3>
                 <div id="playerCards" class="cards-container"></div>
                 <p id="playerScore" class="mt-2">Puntuación: 0</p>
             </div>
         </div>
+    </div>
 
-        <!-- Mensaje de estado del juego -->
-        <div id="gameStatus" class="mt-4 text-center">
-            <h3 id="statusMessage">Presiona "Iniciar Juego" para comenzar</h3>
+    <!-- Modal para mostrar el resultado -->
+    <div class="modal fade" id="gameResultModal" tabindex="-1" aria-labelledby="gameResultModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="gameResultModalLabel">Resultado del Juego</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <p id="gameResultMessage"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" id="playAgainButton">Volver a Jugar</button>
+                </div>
+            </div>
         </div>
     </div>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Archivo de JavaScript -->
-    <script src="../js/script.js"></script>
+    <script src="../assets/js/script.js"></script>
 </body>
 
 </html>

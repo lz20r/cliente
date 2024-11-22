@@ -1,0 +1,75 @@
+body {
+    background-color: #006400;
+    background-image: url('../img/baraja/tapete.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: 'Roboto', sans-serif;
+    color: #000000;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.game-board {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 4px solid #78c297;
+    border-radius: 10px;
+}
+
+.cards-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.card-img {
+    max-width: 100%;
+    width: 20%;
+    height: auto;
+    margin: 10px;
+    perspective: 1000px;
+    display: inline-block;
+}
+
+.card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.card-img.flipped img {
+    transform: rotateY(180deg);
+}
+
+.player-title,
+.dealer-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffd700;
+}
+
+button {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+}
