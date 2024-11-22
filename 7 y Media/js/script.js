@@ -14,16 +14,34 @@ const dealerCardsDiv = document.getElementById("dealerCards");
 const playerScoreEl = document.getElementById("playerScore");
 const dealerScoreEl = document.getElementById("dealerScore");
 
-// Baraja
-const suits = ["♠", "♥", "♦", "♣"];
-const values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
+// Ruta base de las imágenes
+const imagePath = '../assets/img/baraja/';
+const backCardImage = `${imagePath}vuelta.png`; // Imagen de carta boca abajo
+const suits = ["Bastos", "Copas", "Espadas", "Oros"];
+const values = [
+    { value: "1", points: 1 },
+    { value: "2", points: 2 },
+    { value: "3", points: 3 },
+    { value: "4", points: 4 },
+    { value: "5", points: 5 },
+    { value: "6", points: 6 },
+    { value: "7", points: 7 },
+    { value: "10", points: 10 },
+    { value: "11", points: 10 },
+    { value: "12", points: 10 },
+];
 
 // Crear la baraja
 function createDeck() {
     deck = [];
     suits.forEach(suit => {
-        values.forEach(value => {
-            deck.push({ suit, value });
+        values.forEach(card => {
+            deck.push({
+                suit,
+                value: card.value,
+                points: card.points,
+                imageUrl: `${imagePath}${suit}${card.value}.png`,
+            });
         });
     });
 }
@@ -39,34 +57,21 @@ function shuffleDeck() {
 // Calcular puntuación
 function calculateScore(hand) {
     let score = 0;
-    let aces = 0;
     hand.forEach(card => {
-        if (["J", "Q", "K"].includes(card.value)) {
-            score += 10;
-        } else if (card.value === "A") {
-            score += 11;
-            aces += 1;
-        } else {
-            score += parseInt(card.value);
-        }
+        score += card.points;
     });
-    while (score > 21 && aces) {
-        score -= 10;
-        aces--;
-    }
     return score;
 }
 
 // Dibujar cartas
-function renderCards(hand, container) {
+function renderCards(hand, container, hideFirstCard = false) {
     container.innerHTML = "";
-    hand.forEach(card => {
-        const cardDiv = document.createElement("div");
-        cardDiv.className = "card bg-light text-dark m-1";
-        cardDiv.style.width = "50px";
-        cardDiv.style.height = "75px";
-        cardDiv.innerHTML = `<div class="text-center">${card.value}<br>${card.suit}</div>`;
-        container.appendChild(cardDiv);
+    hand.forEach((card, index) => {
+        const cardImg = document.createElement("img");
+        cardImg.src = hideFirstCard && index === 0 ? backCardImage : card.imageUrl;
+        cardImg.alt = `${card.suit} ${card.value}`;
+        cardImg.className = "card-img";
+        container.appendChild(cardImg);
     });
 }
 
@@ -82,14 +87,14 @@ function startGame() {
     standBtn.disabled = false;
     startGameBtn.disabled = true;
 
-    updateUI();
+    updateUI(true);
 }
 
 // Pedir carta
 function hit() {
     if (!gameOver) {
         playerHand.push(deck.pop());
-        updateUI();
+        updateUI(true);
         const playerScore = calculateScore(playerHand);
         if (playerScore > 21) {
             endGame("Has perdido, te pasaste de 21.");
@@ -113,14 +118,15 @@ function stand() {
             endGame("El Crupier gana.");
         }
     }
+    updateUI(false);
 }
 
 // Actualizar interfaz
-function updateUI() {
+function updateUI(hideDealerCard) {
     renderCards(playerHand, playerCardsDiv);
-    renderCards(dealerHand, dealerCardsDiv);
+    renderCards(dealerHand, dealerCardsDiv, hideDealerCard);
     playerScoreEl.textContent = `Puntuación: ${calculateScore(playerHand)}`;
-    dealerScoreEl.textContent = `Puntuación: ${calculateScore(dealerHand)}`;
+    dealerScoreEl.textContent = `Puntuación: ${hideDealerCard ? "?" : calculateScore(dealerHand)}`;
 }
 
 // Finalizar juego
@@ -129,7 +135,7 @@ function endGame(message) {
     hitBtn.disabled = true;
     standBtn.disabled = true;
     startGameBtn.disabled = false;
-    gameOver = true;
+    updateUI(false); // Mostrar todas las cartas del crupier
 }
 
 // Event listeners
