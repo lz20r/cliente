@@ -46,7 +46,7 @@ body {
     width: 150px;
     height: auto;
     margin: 10px;
-    perspective: 1000px;
+    perspective: 100px;
     display: inline-block;
 }
 
