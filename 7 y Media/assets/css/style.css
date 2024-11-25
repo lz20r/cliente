@@ -15,7 +15,6 @@ body {
     min-height: 100vh;
     flex-direction: column;
     text-align: center;
-    overflow: hidden;
     position: relative;
 }
 
@@ -24,10 +23,10 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    max-width: 800px;
+    max-width: 100%;
+    width: 900px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 10px;
     border: 4px solid #78c297;
     border-radius: 10px;
 }

@@ -180,7 +180,7 @@ function endGame(message) {
 // Volver a jugar
 document.getElementById("playAgainButton").addEventListener("click", function () {
     resetGame();
-    const modal = bootstrap.Modal.getInstance(document.getElementById('gameResultModal'));
+    const modal = bootstrap.Modal.getInstance(document.getElementById('gameResultModal '));
     modal.hide();
 });
 
