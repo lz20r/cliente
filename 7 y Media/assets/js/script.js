@@ -213,7 +213,7 @@ function resetGame() {
 
 
 function resetGame() {
-    console.log("El juego ha sido reiniciado");
+    window.location.href = "index.html";
 }
 
 
