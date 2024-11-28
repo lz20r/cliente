@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora de Salarios</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f7f7f7;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: 20px auto;
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      h1,
+      h2 {
+        text-align: center;
+      }
+
+      form {
+        display: grid;
+        gap: 15px;
+      }
+
+      label {
+        font-weight: bold;
+      }
+
+      input {
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+
+      .buttons {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      button {
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      button#calculate-btn {
+        background-color: #007bff;
+        color: white;
+      }
+
+      button#add-btn {
+        background-color: #28a745;
+        color: white;
+      }
+
+      button#save-last-btn {
+        margin-top: 20px;
+        width: 100%;
+        background-color: #ffc107;
+        color: white;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        border: 1px solid #ddd;
+        margin-top: 10px;
+        border-radius: 4px;
+      }
+
+      li button {
+        background-color: #dc3545;
+        color: white;
+      }
+    </style>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Selección de elementos
+        const workerForm = document.getElementById("worker-form");
+        const workerNameInput = document.getElementById("worker-name");
+        const grossSalaryInput = document.getElementById("gross-salary");
+        const startDateInput = document.getElementById("start-date");
+        const endDateInput = document.getElementById("end-date");
+        const calculateBtn = document.getElementById("calculate-btn");
+        const addBtn = document.getElementById("add-btn");
+        const workerList = document.getElementById("worker-list");
+        const saveLastBtn = document.getElementById("save-last-btn");
+
+        // Función para calcular días laborables
+        function calculateWorkDays(startDate, endDate) {
+          const start = new Date(startDate);
+          const end = new Date(endDate);
+          let workDays = 0;
+
+          if (start > end) return -1;
+
+          while (start <= end) {
+            const day = start.getDay();
+            if (day !== 0 && day !== 6) {
+              // Excluir sábados (6) y domingos (0)
+              workDays++;
+            }
+            start.setDate(start.getDate() + 1);
+          }
+
+          return workDays;
+        }
+
+        // Evento para calcular el salario
+        calculateBtn.addEventListener("click", () => {
+          const workerName = workerNameInput.value.trim();
+          const grossSalary = parseFloat(grossSalaryInput.value);
+          const startDate = startDateInput.value;
+          const endDate = endDateInput.value;
+
+          if (!workerName || !grossSalary || !startDate || !endDate) {
+            alert("Por favor, complete todos los campos.");
+            return;
+          }
+
+          const workDays = calculateWorkDays(startDate, endDate);
+          if (workDays === -1) {
+            alert("La fecha de inicio debe ser anterior a la de fin.");
+            return;
+          }
+
+          const dailyNetSalary = grossSalary * 0.85; // Aplicar IRPF del 15%
+          const totalPayment = workDays * dailyNetSalary;
+
+          alert(
+            `Días laborables: ${workDays}\nTotal a pagar: €${totalPayment.toFixed(
+              2
+            )}`
+          );
+        });
+
+        // Evento para añadir a la lista
+        addBtn.addEventListener("click", () => {
+          const workerName = workerNameInput.value.trim();
+          const grossSalary = parseFloat(grossSalaryInput.value);
+          const startDate = startDateInput.value;
+          const endDate = endDateInput.value;
+
+          const workDays = calculateWorkDays(startDate, endDate);
+          if (workDays === -1) {
+            alert("La fecha de inicio debe ser anterior a la de fin.");
+            return;
+          }
+
+          const dailyNetSalary = grossSalary * 0.85;
+          const totalPayment = workDays * dailyNetSalary;
+
+          const li = document.createElement("li");
+          li.textContent = `${workerName} - Total a pagar: €${totalPayment.toFixed(
+            2
+          )}`;
+
+          const deleteBtn = document.createElement("button");
+          deleteBtn.textContent = "X";
+          deleteBtn.addEventListener("click", () => {
+            li.remove();
+          });
+
+          li.appendChild(deleteBtn);
+          workerList.appendChild(li);
+        });
+
+        // Guardar el último trabajador en localStorage
+        saveLastBtn.addEventListener("click", () => {
+          const workerName = workerNameInput.value.trim();
+          const grossSalary = parseFloat(grossSalaryInput.value);
+          const startDate = startDateInput.value;
+          const endDate = endDateInput.value;
+
+          if (!workerName || !grossSalary || !startDate || !endDate) {
+            alert("Por favor, complete todos los campos.");
+            return;
+          }
+
+          const workerData = { workerName, grossSalary, startDate, endDate };
+          localStorage.setItem("lastWorker", JSON.stringify(workerData));
+          alert("Último trabajador guardado.");
+        });
+
+        // Cargar el último trabajador desde localStorage
+        const lastWorker = localStorage.getItem("lastWorker");
+        if (lastWorker) {
+          const { workerName, grossSalary, startDate, endDate } =
+            JSON.parse(lastWorker);
+          const workDays = calculateWorkDays(startDate, endDate);
+
+          if (workDays !== -1) {
+            const dailyNetSalary = grossSalary * 0.85;
+            const totalPayment = workDays * dailyNetSalary;
+
+            const li = document.createElement("li");
+            li.textContent = `${workerName} - Total a pagar: €${totalPayment.toFixed(
+              2
+            )}`;
+
+            const deleteBtn = document.createElement("button");
+            deleteBtn.textContent = "X";
+            deleteBtn.addEventListener("click", () => {
+              li.remove();
+            });
+
+            li.appendChild(deleteBtn);
+            workerList.appendChild(li);
+          }
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Calculadora de Salarios</h1>
+      <form id="worker-form">
+        <label for="worker-name">Nombre del Trabajador:</label>
+        <input type="text" id="worker-name" required />
+
+        <label for="gross-salary">Importe Bruto (€):</label>
+        <input type="number" id="gross-salary" step="0.01" required />
+
+        <label for="start-date">Fecha de Inicio:</label>
+        <input type="date" id="start-date" required />
+
+        <label for="end-date">Fecha de Fin:</label>
+        <input type="date" id="end-date" required />
+
+        <div class="buttons">
+          <button type="button" id="calculate-btn">Calcular</button>
+          <button type="button" id="add-btn">Añadir a la Lista</button>
+        </div>
+      </form>
+
+      <h2>Lista de Trabajadores</h2>
+      <ul id="worker-list"></ul>
+
+      <button id="save-last-btn">Guardar Último</button>
+    </div>
+  </body>
+</html>
