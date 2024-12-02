@@ -1,26 +1,24 @@
 window.onload = function () {
-    const encriptar = () => {
-        const texto = document.getElementById("texto").value;
-        let resultado = "";
-        for (let i = 0; i < texto.length; i++) {
-            const caracter = texto.charCodeAt(i);
-            const nuevoCaracter = String.fromCharCode(caracter + 3);
-            resultado += nuevoCaracter;
-        }
-        document.getElementById("texto-cifrado").value = resultado;
-    };
+    document.querySelector('input[type="button"]'[0]).onclick = function () { encriptar(0); }
+    document.querySelector('input[type="button"]'[1]).onclick = function () { desencriptar(1); }
 
-    const desencriptar = () => {
-        const textoCifrado = document.getElementById("texto-cifrado").value;
-        let resultado = "";
-        for (let i = 0; i < textoCifrado.length; i++) {
-            const caracter = textoCifrado.charCodeAt(i);
-            const nuevoCaracter = String.fromCharCode(caracter - 3);
-            resultado += nuevoCaracter;
-        }
-        document.getElementById("texto").value = resultado;
-    };
+    function encriptar(action) {
+        let text = "";
+        let textoCodificar = texting.value;
 
-    document.getElementById("btn-encriptar").addEventListener("click", encriptar);
-    document.getElementById("btn-desencriptar").addEventListener("click", desencriptar);
+        if (action == 0) {
+            clave = parseInt(Math.random() * 1000);
+        } else {
+            clave = textoCodificar.charCodeAt(textoCodificar.length - 1);
+        }
+
+        for (let i = 0; i < textoCodificar.length; i++) {
+            codigoUnicode = textoCodificar.charCodeAt(i);
+
+
+            action == 0 ? nuevoCaracter = String.fromCharCode(codigoUnicode + clave) : nuevoCaracter = String.fromCharCode(codigoUnicode - clave);
+            console.log(textoCodificar[i], nuevoCaracter);
+            text += nuevoCaracter;
+        }
+    }
 };
