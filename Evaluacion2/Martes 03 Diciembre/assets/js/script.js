@@ -1,6 +1,6 @@
 window.onload = function () {
 	let palabrasJuego = JSON.parse(localStorage.getItem('palabrasJuego')) || [
-		{ palabra: "sol", tabu: ["astro", "estrella", "calor"] },
+		{ palabra: "sol", tabu: ["astro", "estrella", "calor"] }, 
 		{ palabra: "luna", tabu: ["satélite", "nocturno", "cráter"] },
 		{ palabra: "mar", tabu: ["agua", "océano", "playa"] },
 		{ palabra: "montaña", tabu: ["altura", "cima", "roca"] },
@@ -11,7 +11,14 @@ window.onload = function () {
 		{ palabra: "bicicleta", tabu: ["ruedas", "llantas", "motor"] },
 		{ palabra: "avión", tabu: ["motor", "ruedas", "llantas"] },
 		{ palabra: "barco", tabu: ["motor", "ruedas", "llantas"] },
-		{ palabra: "helicoptero", tabu: ["motor", "ruedas", "llantas"] }
+		{ palabra: "helicoptero", tabu: ["motor", "ruedas", "llantas"] },
+		{ palabra: "barco", tabu: ["motor", "ruedas", "llantas"] },
+		{ palabra: "helicoptero", tabu: ["motor", "ruedas", "llantas"] },
+		{ palabra: "avioneta", tabu: ["motor", "ruedas", "llantas"] },
+		{ palabra: "tren", tabu: ["ruedas", "motor", "llantas"] },
+		{ palabra: "camion", tabu: ["ruedas", "motor", "llantas"] },
+		{ palabra: "camioneta", tabu: ["ruedas", "motor", "llantas"] },
+		{ palabra: "deportivo", tabu: ["ruedas", "motor", "llantas"] }
 	];
 	console.log(palabrasJuego);
 
@@ -30,11 +37,19 @@ window.onload = function () {
 		let texto = document.getElementById('texto').value.toLowerCase();
 		let resultado = document.getElementById('resultado');
 		resultado.innerHTML = "";
-		let contienePalabraTabu = palabrasTabu.some(palabra => texto.includes(palabra.toLowerCase()));
-		if (contienePalabraTabu) {
-			resultado.innerHTML = `<p class="text-danger"><strong>¡Atención!</strong> Tu descripción incluye palabras tabú. Intenta de nuevo.</p>`;
+		let palabrasUsadas = palabrasTabu.filter(palabra => texto.includes(palabra.toLowerCase()));
+
+		if (texto === "") {
+			resultado.innerHTML = `
+			<p class="text-danger"><strong>¡Atención!</strong> No has escrito nada. Intenta de nuevo.</p>`;
 		} else {
-			resultado.innerHTML = `<p class="text-success"><strong>¡Bien hecho!</strong> No has usado palabras tabú.</p>`;
+			if (palabrasUsadas.length > 0) {
+				resultado.innerHTML = `
+				<p class="text-danger"><strong>¡Atención!</strong> Has escrito las palabras: ${palabrasUsadas.join(', ')}. Intenta de nuevo.</p>`;
+			} else {
+				resultado.innerHTML = `
+				<p class="text-success"><strong>¡Enhorabuena!</strong> Has acertado la palabra: ${palabraSeleccionada.palabra}</p>`;
+			}
 		}
 	}
 
@@ -49,7 +64,7 @@ window.onload = function () {
 		const tabuArray = nuevasTabu.split(',').map(palabra => palabra.trim().toLowerCase());
 		palabrasJuego.push({ palabra: nuevaPalabra.toLowerCase(), tabu: tabuArray });
 		localStorage.setItem('palabrasJuego', JSON.stringify(palabrasJuego));
-		agregarResultado.innerHTML = `<p class="text-success">Nueva palabra agregada correctamente.</p>`;
+		agregarResultado.innerHTML = `<p class="text-success">Nueva palabra agregada correctamente: ${nuevaPalabra}</p>`;
 		document.getElementById('nuevaPalabra').value = "";
 		document.getElementById('nuevasTabu').value = "";
 		seleccionarPalabra();
