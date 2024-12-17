@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laberinto Mejorado</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            height: 100vh;
+            justify-content: center;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        td {
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            vertical-align: middle;
+            position: relative; 
+            transition: all 0.2s ease-in-out; /* Animación suave */
+            font-size: 24px;  
+        }
+
+        .camino {     
+            background-color: #655e5e;  
+        } 
+
+        .salida {
+            background-color: #28a745;
+            color: #fff;
+        }
+        .bailarina {
+            font-size: 24px;
+            transition: all 0.2s ease-in-out; /* Animación suave */
+        }
+
+        h1 {
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="text-center my-3">
+        <h1>Laberinto Mejorado</h1>
+    </div>
+
+    <!-- Tabla del Laberinto -->
+    <table>
+        <tr>
+            <td class="camino"><span class="bailarina">💃</span></td>
+            <td class="camino"></td>
+            <td class="camino"></td>
+            <td class="camino"></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td class="camino"></td>
+            <td class="camino"></td>
+            <td class="camino"></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="camino"></td>
+            <td class="camino"></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="camino"></td>
+            <td class="camino"></td>
+            <td class="camino"></td>
+            <td class="camino"></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="camino"></td>
+            <td class="camino"></td>
+            <td class="camino"></td>
+            <td class="camino"></td>
+            <td class="camino salida">SALIDA</td>
+        </tr>
+    </table>
+
+    <!-- Flechas de Control -->
+    <div class="text-center my-4">
+        <button onclick="move('up')" class="btn btn-primary m-1">⬆️</button><br>
+        <button onclick="move('left')" class="btn btn-primary m-1">⬅️</button>
+        <button onclick="move('down')" class="btn btn-primary m-1">⬇️</button>
+        <button onclick="move('right')" class="btn btn-primary m-1">➡️</button>
+    </div>
+
+    <script>
+        let currentCell = document.querySelector('.bailarina').parentElement;
+
+        function move(direction) {
+            let nextCell = null;
+
+            if (direction === 'up') {
+                nextCell = currentCell.parentElement.previousElementSibling?.children[currentCell.cellIndex];
+            } else if (direction === 'down') {
+                nextCell = currentCell.parentElement.nextElementSibling?.children[currentCell.cellIndex];
+            } else if (direction === 'left') {
+                nextCell = currentCell.previousElementSibling;
+            } else if (direction === 'right') {
+                nextCell = currentCell.nextElementSibling;
+            }
+
+            // Verifica si la celda es válida y es parte del camino o salida
+            if (nextCell && (nextCell.classList.contains('camino') || nextCell.classList.contains('salida'))) {
+                currentCell.innerHTML = ''; // Limpia la posición actual
+                currentCell = nextCell; // Actualiza la posición
+                currentCell.innerHTML = '<span class="bailarina">💃</span>'; // Mueve la bailarina
+
+                // Verificar si llegó a la salida
+                if (currentCell.classList.contains('salida')) {
+                    setTimeout(() => alert('🎉 ¡Felicidades, llegaste a la salida! 🎉'), 100);
+                }
+            } else {
+                alert('⚠️ Movimiento no permitido. ¡Intenta otra dirección!');
+            }
+        }
+    </script>
+</body>
+</html>
