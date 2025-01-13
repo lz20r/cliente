@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+        <style>
+            * {
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            }
+
+            body {
+                text-align: center;
+            }
+
+            table,
+            td {
+                border: 1px solid rgb(151, 163, 196);
+                border-collapse: collapse;
+            }
+
+            tr {
+                border: 1px solid rgb(0, 0, 0);
+                height: 50px;
+            }
+
+            td {
+                width: 50px;
+                height: 50px;
+                text-align: center;
+            }
+
+            button {
+                display: block;
+                margin: 0 auto;
+            }
+
+            table {
+                margin: 0 auto;
+            }
+
+            td {
+                width: 50px;
+                height: 50px;
+                text-align: center;
+            }
+
+            button {
+                display: block;
+                margin: 0 auto;
+            }
+
+            #rellenar {
+                margin-top: 20px;
+                margin-bottom: 20px;
+                width: 100px;
+                height: 20px;
+                background-color: #4c57af;
+                color: white;
+                border: none;
+                border-radius: 5px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1> Tabla de 4x4 </h1>
+        <table border="2">
+            <tr>
+                <td id="celda1"></td>
+                <td id="celda2"></td>
+                <td id="celda3"></td>
+                <td id="celda4"></td>
+            </tr>
+            <tr>
+                <td id="celda5"></td>
+                <td id="celda6"></td>
+                <td id="celda7"></td>
+                <td id="celda8"></td>
+            </tr>
+            <tr>
+                <td id="celda9"></td>
+                <td id="celda10"></td>
+                <td id="celda11"></td>
+                <td id="celda12"></td>
+            </tr>
+            <tr>
+                <td id="celda13"></td>
+                <td id="celda14"></td>
+                <td id="celda15"></td>
+                <td id="celda16"></td>
+            </tr>
+        </table>
+
+        <button id="rellenar">Rellenar</button>
+
+        <script>
+            function esPrimo(numero) {
+                numero = Number(numero); // Convertir a número
+                if (numero <= 1) return false; // No primos: 1 o números negativos
+                for (let i = 2; i <= Math.sqrt(numero); i++) { // Itera hasta raíz cuadrada
+                    if (numero % i === 0) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+
+            function esMultiploDeTres(numero) {
+                return numero % 3 === 0;
+            }
+
+            const rellenar = document.querySelector("#rellenar");
+            const celdas = document.querySelectorAll("td");
+            let contador = 1;
+
+            rellenar.addEventListener("click", () => {
+                celdas.forEach(celda => {
+                    celda.textContent = contador;
+                    celda.style.backgroundColor = "#b2c0e0";
+                    celda.style.border = "2px solid #b2c0e0";
+                    contador++;
+                });
+            });
+
+            const select = document.createElement("select");
+            select.innerHTML = `
+            <option value="default">Selecciona...</option>
+            <option value="primos">Primos</option>
+            <option value="multiplos">Múltiplos de 3</option>
+        `;
+
+            document.body.appendChild(select);
+
+            select.addEventListener("change", () => {
+                celdas.forEach(celda => {
+                    const numero = Number(celda.textContent); // Convertir contenido a número
+
+                    if (select.value === "primos") {
+                        // Resaltar solo números primos
+                        if (esPrimo(numero)) {
+                            celda.style.backgroundColor = "#cfd7e9";
+                            celda.style.border = "1px solid #cfd7e9";
+                        } else {
+                            celda.style.backgroundColor = "#b2c0e0";
+                            celda.style.border = "2px solid #b2c0e0";
+                        }
+                    } else if (select.value === "multiplos") {
+                        // Resaltar solo múltiplos de 3
+                        if (esMultiploDeTres(numero)) {
+                            celda.style.backgroundColor = "#cfd7e9";
+                            celda.style.border = "1px solid #cfd7e9";
+                        } else {
+                            celda.style.backgroundColor = "#b2c0e0";
+                            celda.style.border = "2px solid #b2c0e0";
+                        }
+                    } else {
+                        // Restablecer colores por defecto
+                        celda.style.backgroundColor = "#b2c0e0";
+                        celda.style.border = "2px solid #b2c0e0";
+                    }
+                });
+            }); 
+        </script>
+    </body>
+
+</html>
