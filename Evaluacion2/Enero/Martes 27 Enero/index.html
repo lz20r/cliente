@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            div {
+                float: left;
+                margin-left: 10px; 
+                padding: 30px;
+                border: 1px solid #000;
+                width: 40%
+            }
+            
+            p {
+                border-bottom: 1px solid #000; 
+                margin-left: 10px;
+            }
+        </style>
+        
+    </head>
+
+    <body>
+        <div id="productos">
+            <p>Pan</p>
+            <p>Leche</p>
+            <p>Queso</p>
+            <p>Yogur</p>
+            <p>Fruta</p>
+            <p>Carne</p>
+        </div>
+        <div id="cesta">
+
+        <script>
+            window.onload = function () {
+                productos.addEventListener("click", añadirProducto, true);
+                document.querySelectorAll("#productos>p").forEach((parrafitos) => {
+                    parrafitos.onclick = function () {
+                        parrafitos.innerHTML = "✔️" + parrafitos.innerHTML;
+                    }
+                })
+            }
+
+            function añadirProducto() {
+                elemento = event.target;
+                
+                if (elemento.tagName == "P") {
+                    cesta.innerHTML += "<p>" + elemento.innerHTML + "</p>"; 
+                }
+            }
+        </script>
+    </body>
+
+</html>
